@@ -30,8 +30,7 @@ public class ArrayStorage {
         if (size == arrLength) {
             System.out.printf("Запись c uuid=%s не может быть добавлена. Достигунт предел %d.%n", r.getUuid(), arrLength);
         } else {
-            int i = checkExist(r.getUuid());
-            if (i == -1) {
+            if (checkExist(r.getUuid()) == -1) {
                 storage[size] = r;
                 size++;
             } else {
@@ -43,10 +42,10 @@ public class ArrayStorage {
     public Resume get(String uuid) {
         int i = checkExist(uuid);
         if (i == -1) {
+            System.out.printf("Запись c uuid=%s отсутствует в массиве.%n", uuid);
             return null;
-        } else {
-            return storage[i];
         }
+        return storage[i];
     }
 
     public void delete(String uuid) {
